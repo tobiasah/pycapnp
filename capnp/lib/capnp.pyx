@@ -2423,7 +2423,7 @@ cdef class _PyAsyncIoStreamProtocol(DummyBaseClass, asyncio.BufferedProtocol):
 
     # State for reading data from the transport
     cdef char* read_buffer
-    cdef size_t read_min_bytes
+    cdef int32_t read_min_bytes
     cdef size_t read_max_bytes
     cdef size_t read_already_read
     cdef PromiseFulfiller[size_t]* read_fulfiller

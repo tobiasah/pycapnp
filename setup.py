@@ -189,9 +189,6 @@ class build_libcapnp_ext(build_ext_c):
 
 extra_compile_args = ["--std=c++14"]
 extra_link_args = []
-if os.name == "nt":
-    extra_compile_args = ["/std:c++14", "/MD"]
-    extra_link_args = ["/MANIFEST"]
 
 import Cython.Build  # noqa: E402
 import Cython  # noqa: E402

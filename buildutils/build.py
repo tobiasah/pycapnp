@@ -28,23 +28,13 @@ def build_libcapnp(bundle_dir, build_dir):  # noqa: C901
 
     # Enable ninja for compilation if available
     build_type = []
-    if shutil.which("ninja"):
+    if shutil.which("ninja"): 
         build_type = ["-G", "Ninja"]
 
     # Determine python shell architecture for Windows
     python_arch = 8 * struct.calcsize("P")
     build_arch = []
     build_flags = []
-    if os.name == "nt":
-        if python_arch == 64:
-            build_arch_flag = "x64"
-        elif python_arch == 32:
-            build_arch_flag = "Win32"
-        else:
-            raise RuntimeError("Unknown windows build arch")
-        build_arch = ["-A", build_arch_flag]
-        build_flags = ["--config", "Release"]
-        print("Building module for {}".format(python_arch))
 
     if not shutil.which("cmake"):
         raise RuntimeError("Could not find cmake in your path!")
